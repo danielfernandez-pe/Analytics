@@ -1,12 +1,12 @@
 //
-//  AnalyticEvent.swift
-//  Analytics
+//  WatcherEvent.swift
+//  Watcher
 //
 //  Created by Daniel Fernandez Yopla on 22.08.2026.
 //
 
-public struct AnalyticsEvent: Sendable, Equatable {
-    public typealias Parameters = [String: AnalyticsValue]
+public struct WatcherEvent: Sendable, Equatable {
+    public typealias Parameters = [String: WatcherValue]
 
     public let name: String
     public let parameters: Parameters

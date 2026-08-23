@@ -4,18 +4,18 @@
 import PackageDescription
 
 let package = Package(
-    name: "Analytics",
+    name: "Watcher",
     platforms: [.iOS(.v18)],
     products: [
         .library(
-            name: "Analytics",
-            targets: ["Analytics"]
+            name: "Watcher",
+            targets: ["Watcher"]
         ),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "Analytics",
+            name: "Watcher",
             dependencies: [],
             path: "Sources",
             swiftSettings: [
