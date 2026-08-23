@@ -6,20 +6,20 @@
 //
 
 public class WatcherBootstrap {
-    nonisolated(unsafe) private static var configuredServices: [any WatcherServiceType] = []
+    nonisolated(unsafe) private static var configuredServices: [any AnalyticsServiceType] = []
 
-    public static func configure(@WatcherBuilder _ builder: () -> [any WatcherServiceType]) {
+    public static func configure(@WatcherBuilder _ builder: () -> [any AnalyticsServiceType]) {
         configuredServices = builder()
     }
 
-    public static func getConfiguredLoggers() -> [any WatcherServiceType] {
+    public static func getConfiguredLoggers() -> [any AnalyticsServiceType] {
         return configuredServices
     }
 }
 
 @resultBuilder
 public struct WatcherBuilder {
-    public static func buildBlock(_ services: (any WatcherServiceType)...) -> [any WatcherServiceType] {
+    public static func buildBlock(_ services: (any AnalyticsServiceType)...) -> [any AnalyticsServiceType] {
         return Array(services)
     }
 }

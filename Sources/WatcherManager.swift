@@ -5,20 +5,20 @@
 //  Created by Daniel Fernandez Yopla on 22.08.2026.
 //
 
-public struct WatcherManager: WatcherServiceType, Sendable {
-    private var services: [any WatcherServiceType]
+public struct WatcherManager: AnalyticsServiceType, Sendable {
+    private var services: [any AnalyticsServiceType]
 
-    public init(services: [any WatcherServiceType]) {
+    public init(services: [any AnalyticsServiceType]) {
         self.services = services
     }
 
-    public func logEvent(_ event: WatcherEvent) {
+    public func logEvent(_ event: AnalyticsEvent) {
         services.forEach {
             $0.logEvent(event)
         }
     }
 
-    public func setGlobalParameters(_ parameters: WatcherEvent.Parameters) {
+    public func setGlobalParameters(_ parameters: AnalyticsEvent.Parameters) {
         services.forEach {
             $0.setGlobalParameters(parameters)
         }
