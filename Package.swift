@@ -24,6 +24,6 @@ let package = Package(
                 .enableUpcomingFeature("NonisolatedNonsendingByDefault")
             ]
         ),
-
+        .testTarget(name: "WatcherTests", dependencies: ["Watcher"]),
     ]
 )
