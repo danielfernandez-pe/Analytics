@@ -18,6 +18,12 @@ public struct WatcherManager: AnalyticsServiceType, Sendable {
         }
     }
 
+    public func logScreen(name: String) {
+        services.forEach {
+            $0.logScreen(name: name)
+        }
+    }
+
     public func setGlobalParameters(_ parameters: AnalyticsEvent.Parameters) {
         services.forEach {
             $0.setGlobalParameters(parameters)
