@@ -14,7 +14,7 @@ private final class RecordingService: AnalyticsServiceType, @unchecked Sendable 
 
     func logEvent(_ event: AnalyticsEvent) {}
     func logScreen(name: String) {}
-    func setGlobalParameter(_ value: AnalyticsValue?, forName name: String) {
+    func setGlobalProperty(_ value: AnalyticsValue?, forName name: String) {
         lock.withLock { recorded.append(.global(name, value)) }
     }
     func setUserProperty(_ value: String?, forName name: String) {
@@ -27,9 +27,9 @@ private final class RecordingService: AnalyticsServiceType, @unchecked Sendable 
     let second = RecordingService()
     let analytics: any AnalyticsServiceType = WatcherManager(services: [first, second])
 
-    analytics.setGlobalParameter(3, forName: "attempts")
+    analytics.setGlobalProperty(3, forName: "attempts")
     analytics.setUserProperty("premium", forName: "tier")
-    analytics.setGlobalParameter(nil, forName: "attempts")
+    analytics.setGlobalProperty(nil, forName: "attempts")
     analytics.setUserProperty(nil, forName: "tier")
 
     let expected: [RecordingService.Call] = [

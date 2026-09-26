@@ -24,9 +24,9 @@ public struct WatcherManager: AnalyticsServiceType, Sendable {
         }
     }
 
-    public func setGlobalParameter(_ value: AnalyticsValue?, forName name: String) {
+    public func setGlobalProperty(_ value: AnalyticsValue?, forName name: String) {
         services.forEach {
-            $0.setGlobalParameter(value, forName: name)
+            $0.setGlobalProperty(value, forName: name)
         }
     }
 

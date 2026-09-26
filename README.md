@@ -16,12 +16,12 @@ are required by the interface.
 Set default event parameters and user properties separately:
 
 ```swift
-analytics.setGlobalParameter("ios", forName: "platform")
-analytics.setGlobalParameter(3, forName: "attempt_count")
+analytics.setGlobalProperty("ios", forName: "platform")
+analytics.setGlobalProperty(3, forName: "attempt_count")
 analytics.setUserProperty("premium", forName: "subscription_tier")
 
 // Remove a previously set value.
-analytics.setGlobalParameter(nil, forName: "attempt_count")
+analytics.setGlobalProperty(nil, forName: "attempt_count")
 analytics.setUserProperty(nil, forName: "subscription_tier")
 
 // Bulk updates remain available as a convenience.
@@ -32,10 +32,16 @@ Global parameters are defaults for subsequent events. Setting or removing one
 must preserve other defaults. User properties describe the user and are kept
 separate from event parameters. Every call is forwarded to all configured services.
 
-### Migrating to 3.0.0
+### Migrating to 4.0.0
+
+When upgrading from 3.0.0, rename `setGlobalParameter(_:forName:)` to
+`setGlobalProperty(_:forName:)` in providers and call sites. The plural
+`setGlobalParameters(_:)` convenience method remains available.
+
+When upgrading from 2.x:
 
 Provider implementations must replace the `setGlobalParameters(_:)` requirement
-with `setGlobalParameter(_:forName:)` and implement `setUserProperty(_:forName:)`.
+with `setGlobalProperty(_:forName:)` and implement `setUserProperty(_:forName:)`.
 The bulk method is now a protocol extension that calls the singular setter for
 each entry; an empty dictionary makes no changes. Providers must support `nil`
 to remove a value. User properties accept strings, while global parameters use
